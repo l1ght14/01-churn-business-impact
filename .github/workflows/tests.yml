@@ -1,10 +1,12 @@
 name: tests
 
+# No `branches:` filter on purpose. These repos' default branch is `master`, and a
+# workflow that listens only to `main` silently never runs -- the workflow shows as
+# "active" in the Actions tab while producing zero runs, which looks like a passing
+# project to anyone who does not open it.
 on:
-  # workflow_dispatch so CI can be re-run on demand; the initial gh repo create --push`n  # does not fire Actions, so without this a reviewer sees no checks at all.
   workflow_dispatch:
   push:
-    branches: [main]
   pull_request:
 
 jobs:
